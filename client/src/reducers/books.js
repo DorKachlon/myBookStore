@@ -1,5 +1,5 @@
 import { saveBooks } from "../localStorage/books";
-
+import { findAndDelete } from "../helperFunction";
 const booksReducer = (state = [], action) => {
   switch (action.type) {
     case "AddBook": {
@@ -8,8 +8,8 @@ const booksReducer = (state = [], action) => {
       return state;
     }
     case "RemoveBook": {
-      const newList = findBookAndDelete(state, action.payload);
-      saveBooks(state);
+      const newList = findAndDelete(state, action.payload);
+      saveBooks(newList);
       return newList;
     }
     case "FetchBooks":
@@ -20,7 +20,3 @@ const booksReducer = (state = [], action) => {
 };
 
 export default booksReducer;
-
-function findBookAndDelete(books, toDelete) {
-  return books.filter((book) => book.id === toDelete.id);
-}
