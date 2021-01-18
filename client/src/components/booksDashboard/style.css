@@ -1,9 +1,3 @@
-.books-dashboard-title {
-  text-align: center;
-  font-size: 30px;
-  padding: 10px;
-  height: 50px;
-}
 .books-dashboard {
   display: flex;
   justify-content: center;
@@ -12,43 +6,4 @@
   overflow-y: auto;
   height: calc(100% - 50px);
   align-items: flex-start;
-}
-.book-card {
-  border-radius: 3px;
-  background-color: white;
-  min-width: 150px;
-  min-height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 10px;
-  text-align: center;
-  margin: 10px;
-}
-.book-card-name {
-  font-size: 22px;
-}
-.book-card-author::before {
-  content: "Author : ";
-}
-.book-card-price::after {
-  content: " $";
-}
-.book-card-control-panel {
-  height: 15px;
-  position: relative;
-}
-.book-card-delete {
-  width: 50px;
-  height: 50px;
-  background-color: rgb(202, 67, 43);
-  padding: 10px;
-  border-radius: 50%;
-}
-.book-card-edit {
-  width: 50px;
-  height: 50px;
-  background-color: rgb(48, 84, 161);
-  padding: 10px;
-  border-radius: 50%;
 }

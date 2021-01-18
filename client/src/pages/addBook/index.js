@@ -1,33 +1,40 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
-import "./style.css";
 import FormControl from "@material-ui/core/FormControl";
-import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
+import { useSelector } from "react-redux";
+import Select from "react-select";
 
 import { useDispatch } from "react-redux";
 import { addBook } from "../../actions/books";
 import { useHistory } from "react-router-dom";
 import bookValidation from "../../validation/bookValidation";
+import "./style.css";
 
 export default function AddBook() {
   const [name, setName] = useState("");
   const [author, setAuthor] = useState("");
   const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState();
   const [error, setError] = useState("");
-
+  const categories = useSelector((state) => state.categories);
+  const options = categories.map((category) => {
+    return { value: category.name, label: category.name };
+  });
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleClick = async (event) => {
     event.preventDefault();
-    const newBook = { id: Date.now().toString(), name, author, price, category };
+    let categoryArr;
+    if (category) {
+      categoryArr = category.map((cate) => cate.label);
+    }
+    const newBook = { id: Date.now().toString(), name, author, price, category: categoryArr };
     try {
       await bookValidation(newBook);
       dispatch(addBook(newBook));
@@ -38,8 +45,8 @@ export default function AddBook() {
   };
 
   return (
-    <form className="add-book-page page" onSubmit={(e) => handleClick(e)}>
-      <h2>Here you can add a new Book</h2>
+    <form className="add-book-form page" onSubmit={(e) => handleClick(e)}>
+      <h2 className="title">Here you can add a new Book</h2>
       <FormControl>
         <TextField
           value={name}
@@ -67,16 +74,7 @@ export default function AddBook() {
         />
       </FormControl>
 
-      <FormControl variant="outlined">
-        <InputLabel>Choose category</InputLabel>
-        <Select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          label="Choose category"
-        >
-          <MenuItem value={"Ten"}>Ten</MenuItem>
-        </Select>
-      </FormControl>
+      <Select isMulti value={category} onChange={(e) => setCategory(e)} options={options} />
 
       <Button variant="contained" type="submit">
         Add book
