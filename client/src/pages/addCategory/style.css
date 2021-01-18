@@ -1,0 +1,12 @@
+.add-category-page {
+  display: flex;
+  align-items: center;
+}
+.add-category-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: space-around;
+  height: 50%;
+  width: 100%;
+}
