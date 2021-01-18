@@ -1,0 +1,15 @@
+.books-dashboard-title {
+  text-align: center;
+  font-size: 30px;
+  padding: 10px;
+  height: 50px;
+  align-self: center;
+  justify-self: center;
+}
+.books-page-control-panel {
+  position: absolute;
+  display: flex;
+}
+.books-page-control-panel {
+  display: flex;
+}
