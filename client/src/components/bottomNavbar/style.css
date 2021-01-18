@@ -1,0 +1,35 @@
+.bottom-navbar-books {
+  width: 100px;
+  height: 100px;
+  background: green;
+  border-radius: 0 100px 0 0;
+  -moz-border-radius: 0 100px 0 0;
+  -webkit-border-radius: 0 100px 0 0;
+  border: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.bottom-navbar-books > svg {
+  position: relative;
+  top: 15px;
+  right: 15px;
+}
+.bottom-navbar-categories {
+  width: 100px;
+  height: 100px;
+  background: orange;
+  border-radius: 100px 0 0 0;
+  -moz-border-radius: 100px 0 0 0;
+  -webkit-border-radius: 100px 0 0 0;
+  border: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.bottom-navbar-categories > svg {
+  position: relative;
+  top: 15px;
+  left: 15px;
+}
