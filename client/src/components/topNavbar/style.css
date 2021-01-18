@@ -1,5 +1,4 @@
 .top-navbar {
-  background-color: tomato;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }

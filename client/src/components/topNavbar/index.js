@@ -3,12 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeDeletion } from "../../actions/deletion";
 import { changeEditing } from "../../actions/editing";
 import { useLocation } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+
 import "./style.css";
 import { Link } from "react-router-dom";
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
 
 export default function TopNavbar() {
   const [booksOrCategories, setBooksOrCategories] = useState();
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   const location = useLocation();
 
@@ -46,10 +56,16 @@ export default function TopNavbar() {
       {booksOrCategories && (
         <>
           <Link to={booksOrCategories === "books" ? "add-book" : "add-category"}>
-            <button>{booksOrCategories === "books" ? "add book" : "add categories"}</button>
+            <Button variant="contained" className={classes.button}>
+              {booksOrCategories === "books" ? "add book" : "add categories"}
+            </Button>
           </Link>
-          <button onClick={deleteHandler}>{deletion ? "Cancel Deletion" : "Delete"}</button>
-          <button onClick={editHandler}>{editing ? "Stop Editing" : "Edit"}</button>
+          <Button variant="contained" onClick={deleteHandler} className={classes.button}>
+            {deletion ? "Cancel Deletion" : "Delete"}
+          </Button>
+          <Button variant="contained" onClick={editHandler} className={classes.button}>
+            {editing ? "Stop Editing" : "Edit"}
+          </Button>
         </>
       )}
     </nav>
