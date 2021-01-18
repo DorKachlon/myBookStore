@@ -7,7 +7,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 
 export default function BottomNavbar() {
   return (
-    <div>
+    <nav className="bottom-navbar">
       <Link to="/books">
         <Tooltip title="Books" placement="top">
           <button className="bottom-navbar-books">
@@ -22,6 +22,6 @@ export default function BottomNavbar() {
           </button>
         </Tooltip>
       </Link>
-    </div>
+    </nav>
   );
 }
