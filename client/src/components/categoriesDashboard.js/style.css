@@ -1,0 +1,34 @@
+.categories-dashboard {
+  height: calc(100% - 50px);
+  overflow-y: auto;
+}
+
+.category-card {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.418);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.category-card-name {
+  font-size: 24px;
+  margin-left: 30px;
+}
+.category-card-delete {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(202, 67, 43);
+  padding: 10px;
+  border-radius: 50%;
+  margin: 0px 5px;
+}
+.category-card-edit {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(48, 84, 161);
+  padding: 10px;
+  border-radius: 50%;
+  margin: 0px 5px;
+}
