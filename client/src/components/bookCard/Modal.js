@@ -10,16 +10,10 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import { useSelector } from "react-redux";
 import Select from "react-select";
-
 import { useDispatch } from "react-redux";
-import { addBook } from "../../actions/books";
-import { useHistory } from "react-router-dom";
-import bookValidation from "../../validation/bookValidation";
+import { updateBook } from "../../actions/books";
+import { bookValidationUpdate } from "../../validation/bookValidation";
 import "./style.css";
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
 
 function getModalStyle() {
   const top = 50;
@@ -37,9 +31,9 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     width: 400,
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    borderRadius: "3px",
   },
 }));
 
@@ -50,21 +44,17 @@ export default function MyModal({ open, setOpen, book }) {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState();
   const [error, setError] = useState("");
+  const [modalStyle] = useState(getModalStyle);
+
   const categories = useSelector((state) => state.categories);
   const options = categories.map((category) => {
     return { value: category.name, label: category.name };
   });
 
-  const [modalStyle] = React.useState(getModalStyle);
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
     setOpen(false);
   };
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const handleClick = async (event) => {
     event.preventDefault();
@@ -72,17 +62,15 @@ export default function MyModal({ open, setOpen, book }) {
     if (category) {
       categoryArr = category.map((cate) => cate.label);
     }
-    const newBook = { name, author, price, category: categoryArr };
-    console.log(newBook);
-    console.log(book);
-
-    // try {
-    //   await bookValidation(newBook);
-    //   dispatch(addBook(newBook));
-    //   history.push("/books");
-    // } catch (error) {
-    //   setError(error.errors[0].split(",")[0]);
-    // }
+    const newProps = clean({ name, author, price, category: categoryArr });
+    const newBook = { ...book, ...newProps };
+    try {
+      await bookValidationUpdate(newBook);
+      dispatch(updateBook(newBook));
+      setOpen(false);
+    } catch (error) {
+      setError(error.errors[0].split(",")[0]);
+    }
   };
 
   const body = (
@@ -126,7 +114,7 @@ export default function MyModal({ open, setOpen, book }) {
               defaultValue={book.category.map((element) => ({ value: element, label: element }))}
             />
 
-            <Button variant="contained" type="submit">
+            <Button variant="contained" type="submit" color="primary">
               Update book
             </Button>
             {error && (
@@ -149,9 +137,19 @@ export default function MyModal({ open, setOpen, book }) {
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
+        style={{ backdropFilter: "blur(10px)" }}
       >
         {body}
       </Modal>
     </div>
   );
+}
+
+function clean(obj) {
+  for (var propName in obj) {
+    if (obj[propName] === null || obj[propName] === undefined || obj[propName] === "") {
+      delete obj[propName];
+    }
+  }
+  return obj;
 }

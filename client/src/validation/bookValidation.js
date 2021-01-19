@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-async function bookValidation(data) {
+export default async function bookValidation(data) {
   const schema = yup.object().shape({
     category: yup.array().required(),
     price: yup.number().required(),
@@ -11,4 +11,13 @@ async function bookValidation(data) {
   return await schema.validate(data);
 }
 
-export default bookValidation;
+export async function bookValidationUpdate(data) {
+  const schema = yup.object().shape({
+    category: yup.array(),
+    price: yup.number(),
+    author: yup.string(),
+    name: yup.string(),
+  });
+
+  return await schema.validate(data);
+}
