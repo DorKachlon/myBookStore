@@ -1,31 +1,31 @@
 import React from "react";
-import BooksDashboard from "../../components/booksDashboard";
 import SortIcon from "@material-ui/icons/Sort";
-import "./style.css";
 import Fab from "@material-ui/core/Fab";
 import Tooltip from "@material-ui/core/Tooltip";
 import GroupWorkIcon from "@material-ui/icons/GroupWork";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { changeGrouped } from "../../actions/grouped";
-import { changeSearch } from "../../actions/search";
-import { sortBooks } from "../../actions/books";
-
-import BooksDashboardByGroup from "../../components/booksDashboardByGroup";
-import BooksDashboardSearch from "../../components/booksDashboardSearch";
-
+import Button from "@material-ui/core/Button";
 import AllInboxIcon from "@material-ui/icons/AllInbox";
 import SearchIcon from "@material-ui/icons/Search";
 import ClearIcon from "@material-ui/icons/Clear";
 
-import Button from "@material-ui/core/Button";
+import BooksDashboard from "../../components/booksDashboard";
+import BooksDashboardByGroup from "../../components/booksDashboardByGroup";
+import BooksDashboardSearch from "../../components/booksDashboardSearch";
+
+import { useDispatch } from "react-redux";
+import { changeGrouped } from "../../actions/grouped";
+import { changeSearch } from "../../actions/search";
+import { sortBooks } from "../../actions/books";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
+import "./style.css";
 
 export default function Books() {
   const books = useSelector((state) => state.books);
   const grouped = useSelector((state) => state.grouped);
-  const dispatch = useDispatch();
   const search = useSelector((state) => state.search);
+  const dispatch = useDispatch();
 
   const sortHandler = () => {
     dispatch(sortBooks());

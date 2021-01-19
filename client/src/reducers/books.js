@@ -1,5 +1,6 @@
 import { saveBooks } from "../localStorage/books";
 import { findAndDelete, findAndUpdate, sortArr } from "../helperFunction";
+
 const booksReducer = (state = [], action) => {
   switch (action.type) {
     case "AddBook": {
@@ -15,7 +16,6 @@ const booksReducer = (state = [], action) => {
     }
 
     case "UpdateBook": {
-      console.log(action.payload);
       const newList = findAndUpdate(state, action.payload);
       saveBooks(newList);
       return newList;

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import Tooltip from "@material-ui/core/Tooltip";
+
 import { useDispatch, useSelector } from "react-redux";
 import { changeDeletion } from "../../actions/deletion";
 import { changeEditing } from "../../actions/editing";
 import { useLocation } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
-import Tooltip from "@material-ui/core/Tooltip";
-import Cover from "./Cover.svg";
-
-import "./style.css";
 import { Link } from "react-router-dom";
+import Cover from "./Cover.svg";
+import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
   button: {

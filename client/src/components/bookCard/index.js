@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import "./style.css";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
-import { useDispatch } from "react-redux";
-import { removeBook } from "../../actions/books";
 import Chip from "@material-ui/core/Chip";
-import MyModal from "./Modal";
 import Tooltip from "@material-ui/core/Tooltip";
+
+import MyModal from "./Modal";
+
+import { removeBook } from "../../actions/books";
+import { useDispatch } from "react-redux";
+import "./style.css";
 
 export default function Book({ book, deletion, editing }) {
   const [open, setOpen] = useState(false);

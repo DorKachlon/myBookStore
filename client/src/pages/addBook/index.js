@@ -6,12 +6,12 @@ import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
-import { useSelector } from "react-redux";
 import Select from "react-select";
 
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { addBook } from "../../actions/books";
 import { useHistory } from "react-router-dom";
+import { addBook } from "../../actions/books";
 import bookValidation from "../../validation/bookValidation";
 import "./style.css";
 
@@ -21,12 +21,14 @@ export default function AddBook() {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState();
   const [error, setError] = useState("");
+
   const categories = useSelector((state) => state.categories);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const options = categories.map((category) => {
     return { value: category.name, label: category.name };
   });
-  const dispatch = useDispatch();
-  const history = useHistory();
 
   const handleClick = async (event) => {
     event.preventDefault();

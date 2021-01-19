@@ -1,18 +1,21 @@
 import React from "react";
-import "./style.css";
-import CategoriesDashboard from "../../components/categoriesDashboard.js";
 import Fab from "@material-ui/core/Fab";
 import Tooltip from "@material-ui/core/Tooltip";
 import SortIcon from "@material-ui/icons/Sort";
-import { useDispatch } from "react-redux";
-import { sortCategories } from "../../actions/categories";
-import { useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
+
+import CategoriesDashboard from "../../components/categoriesDashboard.js";
+
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { sortCategories } from "../../actions/categories";
+import "./style.css";
 
 export default function Categories() {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
+
   const sortHandler = () => {
     dispatch(sortCategories());
   };

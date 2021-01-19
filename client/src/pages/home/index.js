@@ -1,8 +1,8 @@
 import React from "react";
 import Library from "./Library.svg";
 import Cover from "./Cover.svg";
-
 import "./style.css";
+
 export default function Home() {
   return (
     <div className="home-page-container">

@@ -8,8 +8,9 @@ import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
-import { useSelector } from "react-redux";
 import Select from "react-select";
+
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { updateBook } from "../../actions/books";
 import { bookValidationUpdate } from "../../validation/bookValidation";
@@ -47,6 +48,8 @@ export default function MyModal({ open, setOpen, book }) {
   const [modalStyle] = useState(getModalStyle);
 
   const categories = useSelector((state) => state.categories);
+  const dispatch = useDispatch();
+
   const options = categories.map((category) => {
     return { value: category.name, label: category.name };
   });
@@ -54,7 +57,6 @@ export default function MyModal({ open, setOpen, book }) {
   const handleClose = () => {
     setOpen(false);
   };
-  const dispatch = useDispatch();
 
   const handleClick = async (event) => {
     event.preventDefault();

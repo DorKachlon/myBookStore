@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import SaveIcon from "@material-ui/icons/Save";
-import { useDispatch } from "react-redux";
-import { removeCategory, updateCategory } from "../../actions/categories";
 import TextField from "@material-ui/core/TextField";
 import Tooltip from "@material-ui/core/Tooltip";
+
+import { useDispatch } from "react-redux";
+import { removeCategory, updateCategory } from "../../actions/categories";
 import "./style.css";
 
 export default function CategoryCard({ category, deletion, editing }) {

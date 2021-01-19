@@ -1,6 +1,4 @@
 import { useEffect } from "react";
-import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Books from "./pages/books";
 import AddBook from "./pages/addBook";
 import AddCategory from "./pages/addCategory";
@@ -11,10 +9,13 @@ import Home from "./pages/home";
 import BottomNavbar from "./components/bottomNavbar";
 import TopNavbar from "./components/topNavbar";
 
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchBooks } from "./actions/books";
 import { fetchCategories } from "./actions/categories";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import "./App.css";
+
 function App() {
   const dispatch = useDispatch();
 

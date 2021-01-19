@@ -1,9 +1,10 @@
 import React from "react";
-import "./style.css";
-import { Link } from "react-router-dom";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import CategoryIcon from "@material-ui/icons/Category";
 import Tooltip from "@material-ui/core/Tooltip";
+
+import { Link } from "react-router-dom";
+import "./style.css";
 
 export default function BottomNavbar() {
   return (

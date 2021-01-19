@@ -3,11 +3,11 @@ import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import Button from "@material-ui/core/Button";
 import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
+
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import categoryValidation from "../../validation/categoryValidation";
 import { addCategory } from "../../actions/categories";
-
 import "./style.css";
 
 export default function AddCategory() {
