@@ -1,6 +1,4 @@
 export function findAndDelete(arr, toDelete) {
-  console.log(arr);
-  console.log(toDelete);
   return arr.filter((element) => element.id !== toDelete.id);
 }
 export function findAndUpdate(arr, toUpdate) {

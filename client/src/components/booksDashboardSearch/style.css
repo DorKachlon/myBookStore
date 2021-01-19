@@ -1,0 +1,21 @@
+.book-dashboard-search-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.book-dashboard-search-title {
+  font-size: 24px;
+  padding: 10px;
+}
+.book-dashboard-search-selector {
+  display: flex;
+}
+.book-dashboard-search-selector > div {
+  min-width: 400px;
+  width: 50%;
+}
+.book-dashboard-search-books {
+  display: flex;
+  padding: 20px 0px;
+}
