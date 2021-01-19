@@ -1,0 +1,12 @@
+.categories-dashboard-title {
+  text-align: center;
+  font-size: 30px;
+  padding: 10px;
+  height: 50px;
+  align-self: center;
+  justify-self: center;
+}
+.categories-page-control-panel {
+  position: absolute;
+  display: flex;
+}

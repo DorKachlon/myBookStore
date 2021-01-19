@@ -1,0 +1,9 @@
+.books-dashboard {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 15px;
+  overflow-y: auto;
+  height: calc(100% - 50px);
+  align-items: flex-start;
+}

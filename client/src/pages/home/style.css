@@ -1,0 +1,14 @@
+.library-svg {
+  position: absolute;
+  bottom: 0;
+  width: 30vw;
+  left: 35vw;
+}
+.home-logo-title-svg {
+  width: 30vw;
+  min-width: 300px;
+  position: absolute;
+  left: 45%;
+  top: 20%;
+  transform: translate(-50%, -50%);
+}
