@@ -28,7 +28,7 @@ function App() {
     if (categoriesFromLocalStorage) {
       dispatch(fetchCategories(JSON.parse(categoriesFromLocalStorage).categories));
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="background">
