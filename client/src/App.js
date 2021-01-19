@@ -14,7 +14,7 @@ import TopNavbar from "./components/topNavbar";
 import { useDispatch } from "react-redux";
 import { fetchBooks } from "./actions/books";
 import { fetchCategories } from "./actions/categories";
-
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 function App() {
   const dispatch = useDispatch();
 
@@ -33,16 +33,24 @@ function App() {
     <div className="background">
       <Router>
         <TopNavbar />
-        <Switch>
-          <Route exact path="/" component={Home} />
+        <Route
+          render={({ location }) => (
+            <TransitionGroup>
+              <CSSTransition key={location.key} timeout={500} classNames="fade">
+                <Switch location={location}>
+                  <Route exact path="/" component={Home} />
 
-          <Route exact path="/books" component={Books} />
-          <Route exact path="/categories" component={Categories} />
+                  <Route exact path="/books" component={Books} />
+                  <Route exact path="/categories" component={Categories} />
 
-          <Route exact path="/add-book" component={AddBook} />
-          <Route exact path="/add-category" component={AddCategory} />
-          <Route component={NotFound} />
-        </Switch>
+                  <Route exact path="/add-book" component={AddBook} />
+                  <Route exact path="/add-category" component={AddCategory} />
+                  <Route component={NotFound} />
+                </Switch>
+              </CSSTransition>
+            </TransitionGroup>
+          )}
+        />
         <BottomNavbar />
       </Router>
     </div>
