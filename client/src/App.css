@@ -65,3 +65,25 @@
   text-align: center;
   font-size: 24px;
 }
+
+.delete-animation {
+  animation: deleteAnimation 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes deleteAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

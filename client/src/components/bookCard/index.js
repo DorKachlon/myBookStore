@@ -18,7 +18,7 @@ export default function Book({ book, deletion, editing }) {
   };
 
   return (
-    <div className="book-card">
+    <div className={deletion ? "book-card delete-animation" : "book-card"}>
       <h2 className="book-card-name">{book.name}</h2>
       <div className="book-card-author">{book.author}</div>
       <div className="book-card-price">{book.price}</div>
