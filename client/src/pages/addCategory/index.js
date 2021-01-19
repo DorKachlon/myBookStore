@@ -42,7 +42,7 @@ export default function AddCategory() {
           />
         </FormControl>
         <Button variant="contained" type="submit">
-          Add book
+          Add category
         </Button>
         {error && (
           <div className="login-error">

@@ -12,7 +12,7 @@ export function findAndUpdate(arr, toUpdate) {
 }
 export function sortArr(arr) {
   return [...arr].sort(function (a, b) {
-    if (a.name < b.name) {
+    if (a.name.toUpperCase() < b.name.toUpperCase()) {
       return -1;
     }
     if (a.name > b.name) {
