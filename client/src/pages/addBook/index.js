@@ -45,46 +45,48 @@ export default function AddBook() {
   };
 
   return (
-    <form className="add-book-form page" onSubmit={(e) => handleClick(e)}>
-      <h2 className="title">Here you can add a new Book</h2>
-      <FormControl>
-        <TextField
-          value={name}
-          label="Name of the book"
-          variant="outlined"
-          onChange={(e) => setName(e.currentTarget.value)}
-        />
-      </FormControl>
-      <FormControl>
-        <TextField
-          value={author}
-          label="Name of the author"
-          variant="outlined"
-          onChange={(e) => setAuthor(e.currentTarget.value)}
-        />
-      </FormControl>
+    <div className="add-book-page page">
+      <form className="add-book-form" onSubmit={(e) => handleClick(e)}>
+        <h2 className="title">Here you can add a new Book</h2>
+        <FormControl>
+          <TextField
+            value={name}
+            label="Name of the book"
+            variant="outlined"
+            onChange={(e) => setName(e.currentTarget.value)}
+          />
+        </FormControl>
+        <FormControl>
+          <TextField
+            value={author}
+            label="Name of the author"
+            variant="outlined"
+            onChange={(e) => setAuthor(e.currentTarget.value)}
+          />
+        </FormControl>
 
-      <FormControl fullWidth variant="outlined">
-        <InputLabel htmlFor="outlined-adornment-amount">What's the price?</InputLabel>
-        <OutlinedInput
-          value={price}
-          onChange={(e) => setPrice(e.currentTarget.value)}
-          startAdornment={<InputAdornment position="start">$</InputAdornment>}
-          labelWidth={130}
-        />
-      </FormControl>
+        <FormControl fullWidth variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-amount">What's the price?</InputLabel>
+          <OutlinedInput
+            value={price}
+            onChange={(e) => setPrice(e.currentTarget.value)}
+            startAdornment={<InputAdornment position="start">$</InputAdornment>}
+            labelWidth={130}
+          />
+        </FormControl>
 
-      <Select isMulti value={category} onChange={(e) => setCategory(e)} options={options} />
+        <Select isMulti value={category} onChange={(e) => setCategory(e)} options={options} />
 
-      <Button variant="contained" type="submit">
-        Add book
-      </Button>
-      {error && (
-        <div className="login-error">
-          <ErrorOutlineOutlinedIcon style={{ color: "white" }} />
-          <span>{error}</span>
-        </div>
-      )}
-    </form>
+        <Button variant="contained" type="submit">
+          Add book
+        </Button>
+        {error && (
+          <div className="login-error">
+            <ErrorOutlineOutlinedIcon style={{ color: "white" }} />
+            <span>{error}</span>
+          </div>
+        )}
+      </form>
+    </div>
   );
 }

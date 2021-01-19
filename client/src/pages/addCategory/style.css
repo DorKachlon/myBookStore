@@ -1,5 +1,6 @@
 .add-category-page {
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 .add-category-form {
@@ -7,6 +8,7 @@
   flex-direction: column;
   padding: 20px;
   justify-content: space-around;
-  height: 50%;
-  width: 100%;
+  height: 80%;
+  width: 50%;
+  min-width: 300px;
 }
