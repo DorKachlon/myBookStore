@@ -22,9 +22,11 @@ export default function Book({ book, deletion, editing }) {
       <h2 className="book-card-name">{book.name}</h2>
       <div className="book-card-author">{book.author}</div>
       <div className="book-card-price">{book.price}</div>
-      {book.category.map((oneCategory, i) => (
-        <Chip label={oneCategory} key={i} />
-      ))}
+      <div className="book-card-chips">
+        {book.category.map((oneCategory, i) => (
+          <Chip label={oneCategory} key={i} />
+        ))}
+      </div>
       {deletion || editing ? (
         <div className="book-card-control-panel">
           {deletion && (
