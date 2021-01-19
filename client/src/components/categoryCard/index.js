@@ -5,6 +5,8 @@ import SaveIcon from "@material-ui/icons/Save";
 import { useDispatch } from "react-redux";
 import { removeCategory, updateCategory } from "../../actions/categories";
 import TextField from "@material-ui/core/TextField";
+import Tooltip from "@material-ui/core/Tooltip";
+import "./style.css";
 
 export default function CategoryCard({ category, deletion, editing }) {
   const [wantToEdit, setWantToEdit] = useState(false);
@@ -35,22 +37,28 @@ export default function CategoryCard({ category, deletion, editing }) {
       {deletion || editing ? (
         <div className="category-card-control-panel">
           {deletion && (
-            <button className="category-card-delete" onClick={() => deleteHandler(category)}>
-              <DeleteIcon style={{ color: "white" }} />
-            </button>
+            <Tooltip title="Delete">
+              <button className="category-card-delete" onClick={() => deleteHandler(category)}>
+                <DeleteIcon style={{ color: "white" }} />
+              </button>
+            </Tooltip>
           )}
           {editing &&
             (wantToEdit ? (
-              <button className="category-card-edit">
-                <SaveIcon style={{ color: "white" }} onClick={saveHandler} />
-              </button>
+              <Tooltip title="Save">
+                <button className="category-card-edit">
+                  <SaveIcon style={{ color: "white" }} onClick={saveHandler} />
+                </button>
+              </Tooltip>
             ) : (
-              <button className="category-card-edit">
-                <EditIcon
-                  style={{ color: "white" }}
-                  onClick={() => setWantToEdit((prev) => !prev)}
-                />
-              </button>
+              <Tooltip title="Edit">
+                <button className="category-card-edit">
+                  <EditIcon
+                    style={{ color: "white" }}
+                    onClick={() => setWantToEdit((prev) => !prev)}
+                  />
+                </button>
+              </Tooltip>
             ))}
         </div>
       ) : (

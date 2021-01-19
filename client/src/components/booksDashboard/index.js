@@ -1,8 +1,8 @@
 import React from "react";
-import "./style.css";
 import { useSelector } from "react-redux";
+import Book from "../bookCard";
+import "./style.css";
 
-import Book from "../book";
 export default function BooksDashboard() {
   const books = useSelector((state) => state.books);
   const deletion = useSelector((state) => state.deletion);
