@@ -6,10 +6,12 @@ import Tooltip from "@material-ui/core/Tooltip";
 import SortIcon from "@material-ui/icons/Sort";
 import { useDispatch } from "react-redux";
 import { sortCategories } from "../../actions/categories";
+import { useSelector } from "react-redux";
 
 export default function Categories() {
   const dispatch = useDispatch();
-
+  const categories = useSelector((state) => state.categories);
+  console.log(categories);
   const sortHandler = () => {
     dispatch(sortCategories());
   };
