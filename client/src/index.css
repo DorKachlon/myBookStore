@@ -13,7 +13,7 @@ a:focus,
 a:active {
   text-decoration: none;
   color: inherit;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 button {
   cursor: pointer;

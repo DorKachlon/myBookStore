@@ -14,12 +14,14 @@
     rgba(76, 129, 204, 1) 49%,
     rgba(80, 171, 172, 1) 100%
   );
+  overflow-y: auto;
 }
 
 /* Page */
 .page {
   width: 80vw;
   height: 80vh;
+  min-height: 300px;
   position: absolute;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -86,4 +88,16 @@
   100% {
     transform: rotate(0deg);
   }
+}
+
+.empty-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.empty-section * {
+  padding: 10px;
 }

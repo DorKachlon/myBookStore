@@ -5,9 +5,12 @@ import Books from "./pages/books";
 import AddBook from "./pages/addBook";
 import AddCategory from "./pages/addCategory";
 import Categories from "./pages/categories";
+import NotFound from "./pages/notFound";
+import Home from "./pages/home";
 
 import BottomNavbar from "./components/bottomNavbar";
 import TopNavbar from "./components/topNavbar";
+
 import { useDispatch } from "react-redux";
 import { fetchBooks } from "./actions/books";
 import { fetchCategories } from "./actions/categories";
@@ -31,11 +34,14 @@ function App() {
       <Router>
         <TopNavbar />
         <Switch>
+          <Route exact path="/" component={Home} />
+
           <Route exact path="/books" component={Books} />
           <Route exact path="/categories" component={Categories} />
 
           <Route exact path="/add-book" component={AddBook} />
           <Route exact path="/add-category" component={AddCategory} />
+          <Route component={NotFound} />
         </Switch>
         <BottomNavbar />
       </Router>
