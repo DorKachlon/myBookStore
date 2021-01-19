@@ -11,7 +11,7 @@ export function findAndUpdate(arr, toUpdate) {
   });
 }
 export function sortArr(arr) {
-  return arr.sort(function (a, b) {
+  return [...arr].sort(function (a, b) {
     if (a.name < b.name) {
       return -1;
     }
