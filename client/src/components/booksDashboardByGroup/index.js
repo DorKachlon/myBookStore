@@ -1,31 +1,35 @@
 import React from "react";
 import "./style.css";
 import { useSelector } from "react-redux";
-import Book from "../book";
+import Book from "../bookCard";
 
 export default function BooksDashboardByGroup() {
   const books = useSelector((state) => state.books);
   const deletion = useSelector((state) => state.deletion);
   const editing = useSelector((state) => state.editing);
   const booksByGroup = groupByCategories(books);
-  console.log(booksByGroup);
+
   return (
     <>
       <div className="books-dashboard-by-group-container">
         {booksByGroup.map((categoryAndBooks, i) => (
-          <div key={i}>
-            <h1>{categoryAndBooks[0]}</h1>
-            <div className="books-dashboard-by-group">
-              {categoryAndBooks[1].map((book) => (
-                <Book book={book} deletion={deletion} editing={editing} key={book.id} />
-              ))}
+          <>
+            <div key={i} className="books-dashboard-by-group-title-and-books">
+              {i > 0 && <hr className="line"></hr>}
+              <h1 className="books-dashboard-by-group-title">Category: {categoryAndBooks[0]}</h1>
+              <div className="books-dashboard-by-group">
+                {categoryAndBooks[1].map((book) => (
+                  <Book book={book} deletion={deletion} editing={editing} key={book.id} />
+                ))}
+              </div>
             </div>
-          </div>
+          </>
         ))}
       </div>
     </>
   );
 }
+
 function groupByCategories(books) {
   let obj = {};
   books.forEach((element) => {

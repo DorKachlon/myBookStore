@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { removeBook } from "../../actions/books";
 import Chip from "@material-ui/core/Chip";
 import MyModal from "./Modal";
+import Tooltip from "@material-ui/core/Tooltip";
 
 export default function Book({ book, deletion, editing }) {
   const [open, setOpen] = useState(false);
@@ -27,14 +28,18 @@ export default function Book({ book, deletion, editing }) {
       {deletion || editing ? (
         <div className="book-card-control-panel">
           {deletion && (
-            <button className="book-card-delete" onClick={() => deleteHandler(book)}>
-              <DeleteIcon style={{ color: "white" }} />
-            </button>
+            <Tooltip title="Delete">
+              <button className="book-card-delete" onClick={() => deleteHandler(book)}>
+                <DeleteIcon style={{ color: "white" }} />
+              </button>
+            </Tooltip>
           )}
           {editing && (
-            <button className="book-card-edit">
-              <EditIcon style={{ color: "white" }} onClick={() => setOpen(true)} />
-            </button>
+            <Tooltip title="Edit">
+              <button className="book-card-edit">
+                <EditIcon style={{ color: "white" }} onClick={() => setOpen(true)} />
+              </button>
+            </Tooltip>
           )}
         </div>
       ) : (
