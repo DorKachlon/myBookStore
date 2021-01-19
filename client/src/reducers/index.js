@@ -3,6 +3,7 @@ import categoriesReducer from "./categories";
 import deletionReducer from "./deletion";
 import editingReducer from "./editing";
 import groupedReducer from "./grouped";
+import searchReducer from "./search";
 
 import { combineReducers } from "redux";
 
@@ -12,5 +13,6 @@ const allReducers = combineReducers({
   deletion: deletionReducer,
   editing: editingReducer,
   grouped: groupedReducer,
+  search: searchReducer,
 });
 export default allReducers;
