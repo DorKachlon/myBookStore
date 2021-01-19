@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
+import Cover from "./Cover.svg";
 
 import "./style.css";
 import { Link } from "react-router-dom";
@@ -38,6 +39,7 @@ export default function TopNavbar() {
         setBooksOrCategories("categories");
         break;
       default:
+        setBooksOrCategories("");
         break;
     }
   }, [location]);
@@ -56,7 +58,11 @@ export default function TopNavbar() {
     <nav className="top-navbar">
       {booksOrCategories && (
         <>
-          <Link to={booksOrCategories === "books" ? "add-book" : "add-category"}>
+          <Link to="/" className="logo-title-svg">
+            <img src={Cover} alt="logo-title" />
+          </Link>
+
+          <Link to={booksOrCategories === "books" ? "/add-book" : "/add-category"}>
             <Tooltip title={booksOrCategories === "books" ? "Add a book" : "Add a category"}>
               <Button variant="contained" className={classes.button}>
                 {booksOrCategories === "books" ? "add book" : "add categories"}

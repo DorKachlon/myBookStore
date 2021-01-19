@@ -2,3 +2,11 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.logo-title-svg {
+  margin-right: auto;
+  margin-left: 10px;
+}
+.logo-title-svg > img {
+  height: 50px;
+}
