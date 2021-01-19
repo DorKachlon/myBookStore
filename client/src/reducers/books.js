@@ -1,5 +1,5 @@
 import { saveBooks } from "../localStorage/books";
-import { findAndDelete, findAndUpdate } from "../helperFunction";
+import { findAndDelete, findAndUpdate, sortArr } from "../helperFunction";
 const booksReducer = (state = [], action) => {
   switch (action.type) {
     case "AddBook": {
@@ -20,7 +20,11 @@ const booksReducer = (state = [], action) => {
       saveBooks(newList);
       return newList;
     }
-
+    case "SortBooks": {
+      const newList = sortArr(state);
+      saveBooks(newList);
+      return newList;
+    }
     case "FetchBooks":
       return action.payload;
 

@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { changeGrouped } from "../../actions/grouped";
 import { changeSearch } from "../../actions/search";
+import { sortBooks } from "../../actions/books";
 
 import BooksDashboardByGroup from "../../components/booksDashboardByGroup";
 import BooksDashboardSearch from "../../components/booksDashboardSearch";
@@ -17,13 +18,18 @@ import AllInboxIcon from "@material-ui/icons/AllInbox";
 import SearchIcon from "@material-ui/icons/Search";
 import ClearIcon from "@material-ui/icons/Clear";
 
+import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
+
 export default function Books() {
-  const dispatch = useDispatch();
-
-  const sortHandler = () => {};
-
+  const books = useSelector((state) => state.books);
   const grouped = useSelector((state) => state.grouped);
+  const dispatch = useDispatch();
   const search = useSelector((state) => state.search);
+
+  const sortHandler = () => {
+    dispatch(sortBooks());
+  };
   const groupHandler = () => {
     if (search) dispatch(changeSearch());
     dispatch(changeGrouped());
@@ -70,7 +76,25 @@ export default function Books() {
       </div>
 
       <h1 className="books-dashboard-title">Books list</h1>
-      {grouped ? <BooksDashboardByGroup /> : search ? <BooksDashboardSearch /> : <BooksDashboard />}
+      {books.length > 0 ? (
+        grouped ? (
+          <BooksDashboardByGroup />
+        ) : search ? (
+          <BooksDashboardSearch />
+        ) : (
+          <BooksDashboard />
+        )
+      ) : (
+        <div className="empty-section">
+          <h2>Books list is Empty :(</h2>
+          <h2>Click here to add a new book : </h2>
+          <Link to="/add-book">
+            <Tooltip title="Add a book">
+              <Button variant="contained">add a book</Button>
+            </Tooltip>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

@@ -9,7 +9,9 @@ export const removeBook = (toDelete) => {
 export const updateBook = (newUpdateBook) => {
   return { type: "UpdateBook", payload: newUpdateBook };
 };
-
+export const sortBooks = () => {
+  return { type: "SortBooks" };
+};
 export const fetchBooks = (localStorageBooks) => {
   return { type: "FetchBooks", payload: localStorageBooks };
 };
